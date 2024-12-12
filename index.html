@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Switcher</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+
+        .image-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-out;
+        }
+
+        .image-container img.active {
+            opacity: 1;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            color: #090909;
+            padding: 0.7em 1.7em;
+            font-size: 18px;
+            border-radius: 0.5em;
+            background: #e8e8e8;
+            cursor: pointer;
+            border: 1px solid #e8e8e8;
+            transition: all 0.3s;
+            box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+        }
+
+        button:hover {
+            border: 1px solid white;
+        }
+
+        button:active {
+            box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img src="/mnt/data/Light Room Mockup - Reset.png" alt="Reset" id="reset" class="active">
+        <img src="/mnt/data/Light Room Mockup - 3000K Warm Light.png" alt="3000K" id="3000K">
+        <img src="/mnt/data/Light Room Mockup - 4000K Cool White.png" alt="4000K" id="4000K">
+        <img src="/mnt/data/Light Room Mockup - 6500K Day Light.png" alt="6500K" id="6500K">
+    </div>
+
+    <div class="button-container">
+        <button onclick="switchImage('3000K')">3000K</button>
+        <button onclick="switchImage('4000K')">4000K</button>
+        <button onclick="switchImage('6500K')">6500K</button>
+        <button onclick="switchImage('reset')">Reset</button>
+    </div>
+
+    <script>
+        // Disable F12 and right click
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+                event.preventDefault();
+                alert('DevTools is disabled on this page.');
+            }
+        });
+
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+            alert('Right-click is disabled on this page.');
+        });
+
+        function switchImage(imageId) {
+            const images = document.querySelectorAll('.image-container img');
+            images.forEach(img => img.classList.remove('active'));
+
+            const targetImage = document.getElementById(imageId);
+            if (targetImage) {
+                targetImage.classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
