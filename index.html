@@ -12,6 +12,7 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
+            background: #f0f0f0;
         }
 
         .image-container {
@@ -20,9 +21,11 @@
             max-width: 1200px;
             height: auto;
             overflow: hidden;
+            margin-bottom: 20px;
         }
 
         .image-container img {
+            display: block;
             width: 100%;
             height: auto;
             position: absolute;
@@ -37,9 +40,10 @@
         }
 
         .button-container {
-            margin-top: 20px;
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         button {
@@ -63,11 +67,6 @@
         }
 
         @media (max-width: 768px) {
-            .button-container {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
             button {
                 padding: 0.5em 1em;
                 font-size: 16px;
@@ -88,7 +87,7 @@
         <button onclick="switchImage('3000K')">3000K</button>
         <button onclick="switchImage('4000K')">4000K</button>
         <button onclick="switchImage('6500K')">6500K</button>
-        <button onclick="switchImage('reset')">Reset</button>
+        <button onclick="switchImage('Reset')">Reset</button>
     </div>
 
     <script>
@@ -99,6 +98,8 @@
             const targetImage = document.getElementById(imageId);
             if (targetImage) {
                 targetImage.classList.add('active');
+            } else {
+                console.error(`Image with ID "${imageId}" not found.`);
             }
         }
     </script>
