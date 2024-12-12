@@ -17,8 +17,10 @@
 
         .image-container {
             position: relative;
-            width: 80%;
-            max-width: 800px;
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            overflow: hidden;
         }
 
         .image-container img {
@@ -59,6 +61,18 @@
 
         button:active {
             box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .button-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            button {
+                padding: 0.5em 1em;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
